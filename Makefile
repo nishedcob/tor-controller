@@ -5,12 +5,12 @@ build:
 	go build -o tor-local-manager cmd/tor-local-manager/main.go
 
 tor-daemon-manager_docker:
-	docker build . -f Dockerfile.tor-daemon-manager -t quay.io/kragniz/tor-daemon-manager:master
+	docker build . -f Dockerfile.tor-daemon-manager -t nishedcob/tor-daemon-manager:master
 
 tor-controller_docker:
-	docker build . -f Dockerfile.controller -t quay.io/kragniz/tor-controller-manager:master
+	docker build . -f Dockerfile.controller -t nishedcob/tor-controller-manager:master
 
 images: tor-daemon_docker tor-controller_docker
 
 install.yaml:
-	kubebuilder create config --name=tor --controller-image=quay.io/kragniz/tor-controller-manager:master --output=hack/install.yaml
+	kubebuilder create config --name=tor --controller-image=nishedcob/tor-controller-manager:master --output=hack/install.yaml
